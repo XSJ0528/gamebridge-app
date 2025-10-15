@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game Bridge — 链接游戏与加密世界</title>
+  <style>
+    body {margin:0;font-family:sans-serif;background:#111827;color:white;text-align:center;}
+    header {background:#1f2937;padding:1rem;display:flex;justify-content:space-between;align-items:center;}
+    h1 {color:#fb923c;margin:0;}
+    button {background:#f97316;border:none;padding:0.6rem 1rem;border-radius:8px;color:white;cursor:pointer;font-weight:bold;}
+    button:hover {background:#ea580c;}
+    section {padding:2rem;}
+    footer {padding:1rem;border-top:1px solid #374151;color:#9ca3af;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎮 Game Bridge</h1>
+    <button id="connectWallet">🚀 连接钱包</button>
+  </header>
+
+  <main>
+    <h2 style="font-size:2rem;margin-top:2rem;">链接游戏与加密世界</h2>
+    <p style="color:#9ca3af;">通过加密钱包连接 Steam，安全、低费率交易 CS2 饰品并赚取代币奖励。</p>
+    <a href="#roadmap"><button style="margin-top:1rem;">查看路线图</button></a>
+  </main>
+
+  <section id="roadmap">
+    <h3 style="color:#fb923c;font-size:1.5rem;">路线图</h3>
+    <ul style="list-style:none;padding:0;line-height:2rem;color:#d1d5db;">
+      <li>✅ 阶段 1：构建 Web3 交易平台原型</li>
+      <li>🚧 阶段 2：整合多游戏市场（CS2、Dota2 等）</li>
+      <li>🌍 阶段 3：全球推广与代币激励系统上线</li>
+    </ul>
+  </section>
+
+  <footer>© 2025 Game Bridge. All rights reserved.</footer>
+
+  <script>
+    document.getElementById('connectWallet').addEventListener('click', async () => {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          const btn = document.getElementById('connectWallet');
+          btn.textContent = '已连接: ' + accounts[0].slice(0, 6) + '...';
+          btn.disabled = true;
+        } catch (err) {
+          alert('钱包连接被拒绝');
+        }
+      } else {
+        alert('未检测到 MetaMask，请安装后重试。');
+      }
+    });
+  </script>
+</body>
+</html>
